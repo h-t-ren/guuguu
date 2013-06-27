@@ -1,7 +1,6 @@
-/**
- * 
- */
 package cn.ecust.bs.guuguu.domain;
+
+import java.util.Date;
 
 import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
@@ -11,40 +10,67 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
  * email: hongtao.ren@gmail.com
  * created: 2013-6-25
  */
-@NodeEntity
 public class User extends Node {
 	private static final long serialVersionUID = 1L;
 	@Indexed(indexName=FieldIndex.LOGIN, unique=true) private String login;
 	private String password;
+	private String name;
+	private String email;
+	private String mobile;
+	private Date created;
 	private Role[] roles;
-	/**
-	 * @return the login
-	 */
+
 	public String getLogin() {
 		return login;
 	}
-	/**
-	 * @param login the login to set
-	 */
+
 	public void setLogin(String login) {
 		this.login = login;
 	}
-	/**
-	 * @return the password
-	 */
+
 	public String getPassword() {
 		return password;
 	}
-	/**
-	 * @param password the password to set
-	 */
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	 public Role[] getRoles() {
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+    public Role[] getRoles() {
 	        return roles;
 	    }
 	public void setRoles(Role[] roles) {
 	this.roles = roles;
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
 	}
 }

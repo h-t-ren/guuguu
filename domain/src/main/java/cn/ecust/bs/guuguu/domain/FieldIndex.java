@@ -1,6 +1,3 @@
-/**
- * 
- */
 package cn.ecust.bs.guuguu.domain;
 
 /**
@@ -10,5 +7,5 @@ package cn.ecust.bs.guuguu.domain;
  */
 public class FieldIndex {
 public final static String LOGIN="login";
-public final static String knowledgeNode="knowledgeNode";
+public final static String IP="ip";
 }

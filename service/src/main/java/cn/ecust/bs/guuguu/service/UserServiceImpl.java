@@ -9,7 +9,13 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.ecust.bs.guuguu.domain.ClientType;
+import cn.ecust.bs.guuguu.domain.Meeting;
+import cn.ecust.bs.guuguu.domain.MeetingRole;
+import cn.ecust.bs.guuguu.domain.RelationType;
 import cn.ecust.bs.guuguu.domain.User;
+import cn.ecust.bs.guuguu.domain.UserInMeeting;
+import cn.ecust.bs.guuguu.domain.VoteSatus;
 import cn.ecust.bs.guuguu.repo.UserRepository;
 
 /**
@@ -41,4 +47,21 @@ public class UserServiceImpl implements UserService {
         String md5Hash = md5.encodePassword(password, SALT);
          return md5Hash;
        }
+
+	/* (non-Javadoc)
+	 * @see cn.ecust.bs.guuguu.service.UserService#createMeeting(cn.ecust.bs.guuguu.domain.Meeting, java.lang.String, cn.ecust.bs.guuguu.domain.MeetingRole, cn.ecust.bs.guuguu.domain.ClientType, java.lang.String)
+	 */
+	@Override @Transactional
+	public UserInMeeting inMeeting(User user,Meeting meeting, String ip,
+			MeetingRole roleInMeeting, ClientType clientType, String comment,VoteSatus voteSatus) {
+		
+		UserInMeeting userInMeeting = template.createRelationshipBetween(user, meeting, UserInMeeting.class, RelationType.UserInMeeting, false);
+		userInMeeting.setClientType(clientType);
+		userInMeeting.setIp(ip);
+		userInMeeting.setComment(comment);
+		userInMeeting.setRoleInMeeting(roleInMeeting);
+		userInMeeting.setVoteSatus(voteSatus);
+		template.save(userInMeeting);
+		return userInMeeting;
+	}
 }
