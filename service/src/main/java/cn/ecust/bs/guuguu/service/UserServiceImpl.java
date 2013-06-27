@@ -12,9 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.ecust.bs.guuguu.domain.ClientType;
 import cn.ecust.bs.guuguu.domain.Meeting;
 import cn.ecust.bs.guuguu.domain.MeetingRole;
+import cn.ecust.bs.guuguu.domain.MeetingTime;
 import cn.ecust.bs.guuguu.domain.RelationType;
 import cn.ecust.bs.guuguu.domain.User;
 import cn.ecust.bs.guuguu.domain.UserInMeeting;
+import cn.ecust.bs.guuguu.domain.UserPoll;
 import cn.ecust.bs.guuguu.domain.VoteSatus;
 import cn.ecust.bs.guuguu.repo.UserRepository;
 
@@ -63,5 +65,14 @@ public class UserServiceImpl implements UserService {
 		userInMeeting.setVoteSatus(voteSatus);
 		template.save(userInMeeting);
 		return userInMeeting;
+	}
+
+	/* (non-Javadoc)
+	 * @see cn.ecust.bs.guuguu.service.UserService#poll(cn.ecust.bs.guuguu.domain.User, cn.ecust.bs.guuguu.domain.MeetingTime)
+	 */
+	@Override @Transactional
+	public UserPoll poll(User user, MeetingTime meetingTime) {
+		UserPoll userPoll =template.createRelationshipBetween(user, meetingTime, UserPoll.class, RelationType.Poll, false);
+		return userPoll;
 	}
 }

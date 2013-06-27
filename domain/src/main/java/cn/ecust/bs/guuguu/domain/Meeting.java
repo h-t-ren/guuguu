@@ -2,9 +2,6 @@ package cn.ecust.bs.guuguu.domain;
 
 import java.util.Date;
 
-import org.springframework.data.neo4j.annotation.NodeEntity;
-import org.springframework.data.neo4j.fieldaccess.DynamicProperties;
-
 /**
  * @author Hongtao Ren
  * email: hongtao.ren@gmail.com
@@ -21,8 +18,6 @@ public class Meeting extends Node {
 	private Date created;
 	private Date updated;
 	private Date closed;
-
-	private DynamicProperties slots;
 	
 	private String url;
 	private String adminUrl;
@@ -64,39 +59,19 @@ public class Meeting extends Node {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	/**
-	 * @return the slots
-	 */
-	public DynamicProperties getSlots() {
-		return slots;
-	}
-	/**
-	 * @param slots the slots to set
-	 */
-	public void setSlots(DynamicProperties slots) {
-		this.slots = slots;
-	}
-	/**
-	 * @return the url
-	 */
+
 	public String getUrl() {
 		return url;
 	}
-	/**
-	 * @param url the url to set
-	 */
+
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	/**
-	 * @return the adminUrl
-	 */
+
 	public String getAdminUrl() {
 		return adminUrl;
 	}
-	/**
-	 * @param adminUrl the adminUrl to set
-	 */
+
 	public void setAdminUrl(String adminUrl) {
 		this.adminUrl = adminUrl;
 	}

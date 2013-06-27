@@ -1,8 +1,6 @@
 package cn.ecust.bs.guuguu.domain;
 
 import org.springframework.data.neo4j.annotation.EndNode;
-import org.springframework.data.neo4j.annotation.NodeEntity;
-import org.springframework.data.neo4j.annotation.RelationshipEntity;
 import org.springframework.data.neo4j.annotation.StartNode;
 
 /**
@@ -16,14 +14,12 @@ public class UserInMeeting extends Relation {
 	@StartNode private User user;
 	@EndNode private Meeting meeting;
 	
-
 	private String ip;
 	private MeetingRole roleInMeeting;
 	private ClientType clientType;
 	private VoteSatus voteSatus;
 	private String comment;
 	
-	private String[] poll;
 
 	public ClientType getClientType() {
 		return clientType;
@@ -78,20 +74,6 @@ public class UserInMeeting extends Relation {
 
 	public void setVoteSatus(VoteSatus voteSatus) {
 		this.voteSatus = voteSatus;
-	}
-
-	/**
-	 * @return the poll
-	 */
-	public String[] getPoll() {
-		return poll;
-	}
-
-	/**
-	 * @param poll the poll to set
-	 */
-	public void setPoll(String[] poll) {
-		this.poll = poll;
 	}
 
 }

@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.ecust.bs.guuguu.domain.ClientType;
 import cn.ecust.bs.guuguu.domain.Meeting;
 import cn.ecust.bs.guuguu.domain.MeetingRole;
+import cn.ecust.bs.guuguu.domain.MeetingTime;
 import cn.ecust.bs.guuguu.domain.Role;
 import cn.ecust.bs.guuguu.domain.User;
 import cn.ecust.bs.guuguu.domain.UserInMeeting;
@@ -80,41 +81,44 @@ public class UserServiceTest {
 	   meeting.setTitle("暑假郊游");
 	   meeting.setDescription("利用暑假期间组织实验室内所有成员去旅游");
 	   meeting.setLocation("济州岛");
-	   DynamicProperties slots = new DynamicPropertiesContainer();
-	   String[] slot1 = {"上午","下午"};
-	   slots.setProperty(new Date().toString(),slot1);
+	   meetingRepository.save(meeting);
+	   
+	   MeetingTime t1= new MeetingTime();
+	   t1.setMeeting(meeting);
+	   t1.setSeqence(1);
+	   t1.setDate(new Date());
+	   t1.setTimeSlot("上午");
+	   template.save(t1);
 
+	   MeetingTime t2= new MeetingTime();
+	   t2.setMeeting(meeting);
+	   t2.setSeqence(2);
+	   t2.setDate(new Date());
+	   t2.setTimeSlot("下午");
+	   template.save(t2);
+	   
+	   
+	   
 	 
 	   Calendar c=Calendar.getInstance();
 	   c.add(Calendar.DAY_OF_MONTH, 1);
-	   String[] slot2 = {"9:00-10:00","13:00-15:00","17:00-19:00"};
-	   slots.setProperty(c.getTime().toString(), slot2);
+	  
+	   MeetingTime t3= new MeetingTime();
+	   t3.setMeeting(meeting);
+	   t3.setSeqence(3);
+	   t3.setDate(c.getTime());
+	   t3.setTimeSlot("9:00-10:00");
+	   template.save(t3);
 	   
-	   meeting.setSlots(slots);
-	   meetingRepository.save(meeting);
+	   
+	   
   	   User user =  userRepository.findByLogin("hongtao.ren");
-  	  
-  	   
   	   userService.inMeeting(user, meeting, "192.168.0.2", MeetingRole.Leader, ClientType.Web, "每个人至少选一个时间段", VoteSatus.invitated);
-
 
   	   User tieju =  userRepository.findByLogin("tieju.ma");
   	   UserInMeeting userInMeeting =userService.inMeeting(tieju, meeting, "192.168.0.10", MeetingRole.Attendee, ClientType.AndriodApp, null, VoteSatus.voted);
-  	
-  	   Map<String,Object> meetingSlots= meeting.getSlots().asMap();
-  	   String[] poll=new String[5];
-  	   int i=0;
-  	   for(String date:meetingSlots.keySet())
-  	   {
-  		      String[] slts =(String[])meetingSlots.get(date);
-  			  for(String s: slts)
-  			  {
-  				  poll[i]=date+"&&"+s;
-  				  i++;
-  			  }
-
-  	   }
-  	   userInMeeting.setPoll(poll);
-  	 template.save(userInMeeting);
+  	   template.save(userInMeeting);
+  	   userService.poll(tieju, t1);
+  	   userService.poll(tieju, t3);
   }
 }
