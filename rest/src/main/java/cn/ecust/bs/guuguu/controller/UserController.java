@@ -20,9 +20,7 @@ public class UserController {
 
 	@RequestMapping(value="{login}/info", method=RequestMethod.GET, produces="application/json")
 	public @ResponseBody User userInfo(@PathVariable("login") String login) {
-		System.out.println("login:" + login);
-		User user = userRepository.findByLogin(login);
-		return user;
+		return userRepository.findByLogin(login);
 	}
 	
 }

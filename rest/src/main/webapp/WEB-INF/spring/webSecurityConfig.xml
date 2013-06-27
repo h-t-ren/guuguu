@@ -8,16 +8,20 @@
 	<http pattern="/" security="none" />
 	<http pattern="/resources/**" security="none" />
 	<http use-expressions="true">
-	   <intercept-url pattern="/**" access="isAuthenticated()" />
-	    <http-basic />
+		<intercept-url pattern="/**" access="isAuthenticated()" />
+		<http-basic />
 	</http>
-
+	<!-- <authentication-manager> <authentication-provider> <user-service> <user 
+		name="user1" password="user1Pass" authorities="ROLE_USER" /> </user-service> 
+		</authentication-provider> </authentication-manager> 
+     -->
 	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="user1" password="user1Pass" authorities="ROLE_USER" />
-			</user-service>
+		<authentication-provider user-service-ref="userDetailsService">
+			<password-encoder hash="md5">
+				<salt-source system-wide="guuguu,guuguu" />
+			</password-encoder>
 		</authentication-provider>
 	</authentication-manager>
-
+    <beans:bean id="userDetailsService" class="cn.ecust.bs.guuguu.service.GuuGuuUserDetailsService" />
+  
 </beans:beans>

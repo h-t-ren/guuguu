@@ -14,8 +14,9 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 @NodeEntity
 public class User extends Node {
 	private static final long serialVersionUID = 1L;
-	@Indexed private String login;
+	@Indexed(indexName=FieldIndex.LOGIN, unique=true) private String login;
 	private String password;
+	private Role[] roles;
 	/**
 	 * @return the login
 	 */
@@ -40,5 +41,10 @@ public class User extends Node {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	 public Role[] getRoles() {
+	        return roles;
+	    }
+	public void setRoles(Role[] roles) {
+	this.roles = roles;
+	}
 }
