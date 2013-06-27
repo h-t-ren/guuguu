@@ -6,30 +6,22 @@ package cn.ecust.bs.guuguu.test.service;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.neo4j.fieldaccess.DynamicProperties;
-import org.springframework.data.neo4j.fieldaccess.DynamicPropertiesContainer;
 import org.springframework.data.neo4j.template.Neo4jOperations;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
 import cn.ecust.bs.guuguu.domain.ClientType;
 import cn.ecust.bs.guuguu.domain.Meeting;
-import cn.ecust.bs.guuguu.domain.MeetingRole;
 import cn.ecust.bs.guuguu.domain.MeetingTime;
 import cn.ecust.bs.guuguu.domain.Role;
 import cn.ecust.bs.guuguu.domain.User;
-import cn.ecust.bs.guuguu.domain.UserInMeeting;
-import cn.ecust.bs.guuguu.domain.VoteSatus;
 import cn.ecust.bs.guuguu.repo.MeetingRepository;
 import cn.ecust.bs.guuguu.repo.UserRepository;
 import cn.ecust.bs.guuguu.service.UserService;
@@ -46,7 +38,7 @@ public class UserServiceTest {
   @Autowired private UserService userService;
   @Autowired protected UserRepository userRepository;
   @Autowired protected MeetingRepository meetingRepository;
-	@Autowired private Neo4jOperations template;
+  @Autowired private Neo4jOperations template;
   private Logger log = LoggerFactory.getLogger(this.getClass());
   @Before
   public void setUp() throws Exception {
@@ -113,11 +105,10 @@ public class UserServiceTest {
 	   
 	   
   	   User user =  userRepository.findByLogin("hongtao.ren");
-  	   userService.inMeeting(user, meeting, "192.168.0.2", MeetingRole.Leader, ClientType.Web, "每个人至少选一个时间段", VoteSatus.invitated);
+  	   userService.createOrParticipateMeeting(user, meeting, "192.168.0.2", ClientType.Web, "每个人至少选一个时间段",true);
 
   	   User tieju =  userRepository.findByLogin("tieju.ma");
-  	   UserInMeeting userInMeeting =userService.inMeeting(tieju, meeting, "192.168.0.10", MeetingRole.Attendee, ClientType.AndriodApp, null, VoteSatus.voted);
-  	   template.save(userInMeeting);
+  	   userService.createOrParticipateMeeting(tieju, meeting, "192.168.0.10", ClientType.AndriodApp, null,false);
   	   userService.poll(tieju, t1);
   	   userService.poll(tieju, t3);
   }

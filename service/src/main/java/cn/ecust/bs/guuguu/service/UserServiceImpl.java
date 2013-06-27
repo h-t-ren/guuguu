@@ -1,6 +1,3 @@
-/**
- * 
- */
 package cn.ecust.bs.guuguu.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +5,14 @@ import org.springframework.data.neo4j.template.Neo4jOperations;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import cn.ecust.bs.guuguu.domain.ClientType;
 import cn.ecust.bs.guuguu.domain.Meeting;
-import cn.ecust.bs.guuguu.domain.MeetingRole;
 import cn.ecust.bs.guuguu.domain.MeetingTime;
 import cn.ecust.bs.guuguu.domain.RelationType;
 import cn.ecust.bs.guuguu.domain.User;
-import cn.ecust.bs.guuguu.domain.UserInMeeting;
+import cn.ecust.bs.guuguu.domain.UserCreateMeeting;
+import cn.ecust.bs.guuguu.domain.UserParticipateMeeting;
 import cn.ecust.bs.guuguu.domain.UserPoll;
-import cn.ecust.bs.guuguu.domain.VoteSatus;
 import cn.ecust.bs.guuguu.repo.UserRepository;
 
 /**
@@ -54,17 +49,26 @@ public class UserServiceImpl implements UserService {
 	 * @see cn.ecust.bs.guuguu.service.UserService#createMeeting(cn.ecust.bs.guuguu.domain.Meeting, java.lang.String, cn.ecust.bs.guuguu.domain.MeetingRole, cn.ecust.bs.guuguu.domain.ClientType, java.lang.String)
 	 */
 	@Override @Transactional
-	public UserInMeeting inMeeting(User user,Meeting meeting, String ip,
-			MeetingRole roleInMeeting, ClientType clientType, String comment,VoteSatus voteSatus) {
-		
-		UserInMeeting userInMeeting = template.createRelationshipBetween(user, meeting, UserInMeeting.class, RelationType.UserInMeeting, false);
-		userInMeeting.setClientType(clientType);
-		userInMeeting.setIp(ip);
-		userInMeeting.setComment(comment);
-		userInMeeting.setRoleInMeeting(roleInMeeting);
-		userInMeeting.setVoteSatus(voteSatus);
-		template.save(userInMeeting);
-		return userInMeeting;
+	public void createOrParticipateMeeting(User user,Meeting meeting, String ip,
+			ClientType clientType, String comment,Boolean create) {
+		if(create)
+		{
+			UserCreateMeeting userCreateMeeting = template.createRelationshipBetween(user, meeting, UserCreateMeeting.class, RelationType.UserCreateMeeting, false);
+			userCreateMeeting.setClientType(clientType);
+			userCreateMeeting.setIp(ip);
+			userCreateMeeting.setComment(comment);
+			template.save(userCreateMeeting);
+		}
+		else
+		{
+			UserParticipateMeeting userParticipateMeeting = template.createRelationshipBetween(user, meeting, UserParticipateMeeting.class, RelationType.UserParticipateMeeting, false);
+			userParticipateMeeting.setClientType(clientType);
+			userParticipateMeeting.setIp(ip);
+			userParticipateMeeting.setComment(comment);
+			template.save(userParticipateMeeting);
+		}
+	
+
 	}
 
 	/* (non-Javadoc)

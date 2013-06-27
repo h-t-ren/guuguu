@@ -8,16 +8,14 @@ import org.springframework.data.neo4j.annotation.StartNode;
  * email: hongtao.ren@gmail.com
  * created: 2013-6-25
  */
-public class UserInMeeting extends Relation {
+public class UserCreateMeeting extends Relation {
 
 	private static final long serialVersionUID = 1L;
 	@StartNode private User user;
 	@EndNode private Meeting meeting;
 	
 	private String ip;
-	private MeetingRole roleInMeeting;
 	private ClientType clientType;
-	private VoteSatus voteSatus;
 	private String comment;
 	
 
@@ -37,13 +35,6 @@ public class UserInMeeting extends Relation {
 		this.comment = comment;
 	}
 
-	public MeetingRole getRoleInMeeting() {
-		return roleInMeeting;
-	}
-
-	public void setRoleInMeeting(MeetingRole roleInMeeting) {
-		this.roleInMeeting = roleInMeeting;
-	}
 
 	public User getUser() {
 		return user;
@@ -66,14 +57,6 @@ public class UserInMeeting extends Relation {
 
 	public void setIp(String ip) {
 		this.ip = ip;
-	}
-
-	public VoteSatus getVoteSatus() {
-		return voteSatus;
-	}
-
-	public void setVoteSatus(VoteSatus voteSatus) {
-		this.voteSatus = voteSatus;
 	}
 
 }

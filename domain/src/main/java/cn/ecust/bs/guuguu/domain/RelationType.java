@@ -7,6 +7,7 @@ package cn.ecust.bs.guuguu.domain;
  */
 public class RelationType {
 	public final static String MeetingHasTimeSlots="MeetingHasTimeSlots";
-	public final static String UserInMeeting="UserInMeeting";
+	public final static String UserCreateMeeting="UserCreateMeeting";
+	public final static String UserParticipateMeeting="UserParticipateMeeting";
 	public final static String Poll="Poll";
 }
