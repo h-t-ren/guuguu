@@ -16,7 +16,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import cn.ecust.bs.guuguu.domain.User;
-
 public class GuuGuuUserDetailsService implements UserDetailsService {
 
 	@Autowired

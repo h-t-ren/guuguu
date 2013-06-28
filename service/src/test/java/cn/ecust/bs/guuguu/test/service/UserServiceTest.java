@@ -1,6 +1,3 @@
-/**
- * 
- */
 package cn.ecust.bs.guuguu.test.service;
 
 
@@ -32,8 +29,7 @@ import cn.ecust.bs.guuguu.service.UserService;
  * created: 2013-6-25
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"/service-test-context.xml"})
-
+@ContextConfiguration({"/service-context.xml"})
 public class UserServiceTest {
   @Autowired private UserService userService;
   @Autowired protected UserRepository userRepository;
@@ -49,7 +45,7 @@ public class UserServiceTest {
   	   User me = new User();
   	   me.setLogin("hongtao.ren");
   	   me.setPassword("1977921");
-  	   Role[] roles={Role.ROLE_BROWSER,Role.ROLE_USER};
+  	   Role[] roles={Role.ROLE_USER};
        me.setRoles(roles);
   	   userService.register(me);
   	   
@@ -60,7 +56,7 @@ public class UserServiceTest {
   	   User tieju = new User();
   	   tieju.setLogin("tieju.ma");
        tieju.setPassword("123456");
-  	   Role[] roles1={Role.ROLE_BROWSER};
+  	   Role[] roles1={Role.ROLE_USER};
        tieju.setRoles(roles1);
   	   userService.register(tieju);
   }
@@ -89,19 +85,15 @@ public class UserServiceTest {
 	   t2.setTimeSlot("下午");
 	   template.save(t2);
 	   
-	   
-	   
 	 
 	   Calendar c=Calendar.getInstance();
 	   c.add(Calendar.DAY_OF_MONTH, 1);
-	  
 	   MeetingTime t3= new MeetingTime();
 	   t3.setMeeting(meeting);
 	   t3.setSeqence(3);
 	   t3.setDate(c.getTime());
 	   t3.setTimeSlot("9:00-10:00");
 	   template.save(t3);
-	   
 	   
 	   
   	   User user =  userRepository.findByLogin("hongtao.ren");

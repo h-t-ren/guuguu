@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Hongtao Ren email: hongtao.ren@gmail.com created: 2013-6-26
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "/service-test-context.xml" })
+@ContextConfiguration({"/service-context.xml"})
 @Transactional
 public class DbInitTest {
 

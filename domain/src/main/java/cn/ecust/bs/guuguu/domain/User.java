@@ -3,7 +3,6 @@ package cn.ecust.bs.guuguu.domain;
 import java.util.Date;
 
 import org.springframework.data.neo4j.annotation.Indexed;
-import org.springframework.data.neo4j.annotation.NodeEntity;
 
 /**
  * @author Hongtao Ren

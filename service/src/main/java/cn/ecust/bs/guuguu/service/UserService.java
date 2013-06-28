@@ -1,6 +1,3 @@
-/**
- * 
- */
 package cn.ecust.bs.guuguu.service;
 
 import cn.ecust.bs.guuguu.domain.ClientType;

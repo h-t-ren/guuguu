@@ -6,5 +6,5 @@ package cn.ecust.bs.guuguu.domain;
  * created: 2013-6-26
  */
 public enum Role {
-	 ROLE_BROWSER,ROLE_USER, ROLE_ADMIN;
+	 ROLE_USER, ROLE_ADMIN;
 }

@@ -23,7 +23,7 @@ public class GuuGuuUserDetails implements UserDetails {
 private static final long serialVersionUID = 1L;
 private final User user;
 
-    private final String role_Hierarchy="ROLE_ADMIN>ROLE_USER ROLE_USER>ROLE_BROWSER";
+    private final String role_Hierarchy="ROLE_ADMIN>ROLE_USER";
     public GuuGuuUserDetails(User user) {
         this.user = user;
     }
