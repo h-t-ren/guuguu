@@ -2,6 +2,8 @@
  * 
  */
 package cn.ecust.bs.guuguu.test.service;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.velocity.app.VelocityEngine;
 import org.junit.Test;
@@ -28,13 +30,13 @@ public class EmailSenderTest {
 
 	    @Test
 	    public void testSendEmail() throws Exception {
-	    	emailSenderService.sendEmail("conceit_conceit@163.com", "53564232@qq.com", "Test");
+	    	String[] to = new String[]{"conceit_conceit@163.com"};
+	    	String subject = "测试邮件";
+	    	String[] files =new String[]{"c:/pass/pass.txt","c:/22.log"};
+	    	 Map<String,Object> model = new HashMap<String,Object>();
+	         model.put("userName","任宏涛");
+	         model.put("emailAddress", "conceit_conceit@163.com");
+	    	emailSenderService.sendEmail(to, subject, model,files);
 	    }
-/*
-	    @Test
-	    public void testSendEmailWithAttachment() throws Exception {
-	        emailSender.sendEmailWithAttachment("hongtao.ren@gmail.com", "baljit.garcha@cavalr.com", "Test",
-	                "D:/git/guuguu/.gitignore", "gitignore");
-	    }
-	    */
+  
 }

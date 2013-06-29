@@ -1,12 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html>
+
 <body>
-Dear Registered User,<p/>
 
-This is a reminder email. Please remember to submit your application by EOD today.<p/>
+<h3>您好 $!{userName}, 欢迎您加入编程爱好者俱乐部!</h3>
 
-Thanks<br/>
-Development Team.
+ 
+
+<div>
+
+    您的email地址是<a href="mailto:${emailAddress}">$!{emailAddress}</a>.
+
+  本条信息是系统自动发送，请勿回复！
+
+</div>
 
 </body>
+
+ 
+
 </html>
