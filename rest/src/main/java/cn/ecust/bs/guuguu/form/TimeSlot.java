@@ -11,7 +11,7 @@ import java.util.Date;
  * email: hongtao.ren@gmail.com
  * created: 2013-6-29
  */
-public class TimeSlots implements Serializable {
+public class TimeSlot implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Date date;
 	private String timeSlot;

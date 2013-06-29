@@ -15,7 +15,7 @@ public class MeetingForm implements Serializable {
 	private String description;
 	private String creator;
 	private String creatorEmail;
-	private TimeSlots[] timeSlots[];
+	private TimeSlot[] timeSlot;
 	private String[] receivers;
 	
 	public String getTitle() {
@@ -48,11 +48,11 @@ public class MeetingForm implements Serializable {
 	public void setCreatorEmail(String creatorEmail) {
 		this.creatorEmail = creatorEmail;
 	}
-	public TimeSlots[][] getTimeSlots() {
-		return timeSlots;
+	public TimeSlot[] getTimeSlot() {
+		return timeSlot;
 	}
-	public void setTimeSlots(TimeSlots[][] timeSlots) {
-		this.timeSlots = timeSlots;
+	public void setTimeSlot(TimeSlot[] timeSlot) {
+		this.timeSlot = timeSlot;
 	}
 	public String[] getReceivers() {
 		return receivers;
