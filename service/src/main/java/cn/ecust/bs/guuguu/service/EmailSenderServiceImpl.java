@@ -35,9 +35,6 @@ public class EmailSenderServiceImpl implements EmailSenderService {
 			) {
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
-
-				System.out.println("from: " + from);
-				System.out.println("subject: " + subject);
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage,
 						true, "UTF-8");
 				message.setTo(toEmailAddresses);
@@ -48,7 +45,6 @@ public class EmailSenderServiceImpl implements EmailSenderService {
 				message.setText(body, true);
 				if (files != null) {
 					for (String f : files) {
-
 						FileSystemResource file = new FileSystemResource(new File(f));
 						message.addAttachment(f, file);
 					}
