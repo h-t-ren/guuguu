@@ -28,8 +28,6 @@ public class UserServiceImpl implements UserService {
     @Autowired private UserRepository userRepository;
     private static final String SALT = "guuguu,guuguu";
     
-    
-	
 	/* (non-Javadoc)
 	 * @see cn.ecust.bs.guuguu.service.UserService#register(cn.ecust.bs.guuguu.domain.User)
 	 */
