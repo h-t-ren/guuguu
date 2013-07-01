@@ -2,6 +2,8 @@ package cn.ecust.bs.guuguu.form;
 
 import java.io.Serializable;
 
+import cn.ecust.bs.guuguu.domain.ClientType;
+
 /**
  * @author Hongtao Ren
  * email: hongtao.ren@gmail.com
@@ -17,6 +19,10 @@ public class MeetingForm implements Serializable {
 	private String creatorEmail;
 	private TimeSlot[] timeSlot;
 	private String[] receivers;
+	
+	private String ip;
+	private ClientType clientType;
+	private String comment;
 	
 	public String getTitle() {
 		return title;
@@ -59,6 +65,27 @@ public class MeetingForm implements Serializable {
 	}
 	public void setReceivers(String[] receivers) {
 		this.receivers = receivers;
+	}
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public ClientType getClientType() {
+		return clientType;
+	}
+
+	public void setClientType(ClientType clientType) {
+		this.clientType = clientType;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	

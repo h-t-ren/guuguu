@@ -45,22 +45,26 @@ public class UserServiceTest {
   	   User me = new User();
   	   me.setLogin("hongtao.ren");
   	   me.setPassword("1977921");
+       me.setEmail("hongtao.ren@gmail.com");
   	   Role[] roles={Role.ROLE_USER};
        me.setRoles(roles);
   	   userService.register(me);
   	   
   	   User user =  userRepository.findByLogin("hongtao.ren");
+    	
   	   log.debug("password is: "+ user.getPassword()); 
   	   
   	   
   	   User tieju = new User();
   	   tieju.setLogin("tieju.ma");
        tieju.setPassword("123456");
+       tieju.setLogin("tieju@ecust.edu.cn");
   	   Role[] roles1={Role.ROLE_USER};
        tieju.setRoles(roles1);
   	   userService.register(tieju);
   }
   
+  /*
   @Test @Transactional
   @Rollback(false)
   public void testCreateMeeting() throws Exception {
@@ -104,4 +108,5 @@ public class UserServiceTest {
   	   userService.poll(tieju, t1);
   	   userService.poll(tieju, t3);
   }
+  */
 }

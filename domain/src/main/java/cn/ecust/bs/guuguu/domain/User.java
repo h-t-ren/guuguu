@@ -14,7 +14,7 @@ public class User extends Node {
 	@Indexed(indexName=FieldIndex.LOGIN, unique=true) private String login;
 	private String password;
 	private String name;
-	private String email;
+	@Indexed private String email;
 	private String mobile;
 	private Date created;
 	private Role[] roles;

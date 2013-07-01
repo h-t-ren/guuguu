@@ -22,6 +22,8 @@ public class Meeting extends Node {
 	private String url;
 	private String adminUrl;
 	
+	private String[] receivers;
+	
 	public String getTitle() {
 		return title;
 	}
@@ -74,6 +76,12 @@ public class Meeting extends Node {
 
 	public void setAdminUrl(String adminUrl) {
 		this.adminUrl = adminUrl;
+	}
+	public String[] getReceivers() {
+		return receivers;
+	}
+	public void setReceivers(String[] receivers) {
+		this.receivers = receivers;
 	}
 
 }

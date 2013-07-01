@@ -75,6 +75,17 @@ public class UserServiceImpl implements UserService {
 	@Override @Transactional
 	public UserPoll poll(User user, MeetingTime meetingTime) {
 		UserPoll userPoll =template.createRelationshipBetween(user, meetingTime, UserPoll.class, RelationType.Poll, false);
+		Integer count =meetingTime.getCount();
+		if(count==null)
+		{
+			count =1;
+		}
+		else
+		{
+			count =count+1;
+		}
+		meetingTime.setCount(count);
+		template.save(meetingTime);
 		return userPoll;
 	}
 }

@@ -20,7 +20,7 @@ import cn.ecust.bs.guuguu.repo.UserRepository;
  * created: 2013-6-25
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"/service-test-context.xml"})
+@ContextConfiguration({"/service-context.xml"})
 @Transactional
 public class UserTest {
 
@@ -35,13 +35,5 @@ public class UserTest {
 
     @Test
     public void testCreateUser() throws Exception {
-    	User me = new User();
-    	me.setLogin("hongtao.ren");
-        User user = userRepository.save(me);
-        assertEquals("user login", "hongtao.ren",user.getLogin());
-  
-        User user2=userRepository.findOne(user.getId());
-        assertEquals("loaded user id", user.getId(),user2.getId());
-        assertEquals("loaded user login", "hongtao.ren",user2.getLogin());
     }
 }
