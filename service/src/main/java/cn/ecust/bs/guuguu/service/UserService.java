@@ -1,10 +1,10 @@
 package cn.ecust.bs.guuguu.service;
 
-import cn.ecust.bs.guuguu.domain.ClientType;
 import cn.ecust.bs.guuguu.domain.Meeting;
 import cn.ecust.bs.guuguu.domain.MeetingTime;
 import cn.ecust.bs.guuguu.domain.User;
 import cn.ecust.bs.guuguu.domain.UserPoll;
+import cn.ecust.bs.guuguu.ws.domain.ClientType;
 
 
 /**

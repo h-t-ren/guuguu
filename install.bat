@@ -1,5 +1,8 @@
 echo path is: %PATH%
 set path1=%cd%
+cd ./ws-domain
+call mvn clean install
+cd %path1%
 cd ./domain
 call mvn clean install
 cd %path1%

@@ -7,6 +7,7 @@ import java.util.Date;
  * email: hongtao.ren@gmail.com
  * created: 2013-6-27
  */
+
 public class Meeting extends Node {
 
 	private static final long serialVersionUID = 1L;

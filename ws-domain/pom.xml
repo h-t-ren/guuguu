@@ -2,15 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.ecust.bs.guuguu</groupId>
-	<artifactId>guuguu-domain</artifactId>
+	<artifactId>guuguu-ws-domain</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
-	<name>guuguu domain</name>
+	<name>guuguu ws domain</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>3.2.0.RELEASE</spring.version>
-		<spring-data-neo4j.version>2.2.1.RELEASE</spring-data-neo4j.version>
 	</properties>
 
 	<repositories>
@@ -35,12 +34,6 @@
 	</repositories>
 
 	<dependencies>
-			<!-- ws- domain -->
-		<dependency>
-			<groupId>cn.ecust.bs.guuguu</groupId>
-			<artifactId>guuguu-ws-domain</artifactId>
-			<version>1.0</version>
-		</dependency>
 		<!-- Spring dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -53,33 +46,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-	<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-			<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-neo4j</artifactId>
-			<version>${spring-data-neo4j.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.hibernate.javax.persistence</groupId>
-					<artifactId>hibernate-jpa-2.0-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
+	
 
 	</dependencies>
 	<build>

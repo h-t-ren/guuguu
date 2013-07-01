@@ -13,9 +13,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
-
-import cn.ecust.bs.guuguu.domain.Role;
 import cn.ecust.bs.guuguu.domain.User;
+import cn.ecust.bs.guuguu.ws.domain.Role;
 
 
 public class GuuGuuUserDetails implements UserDetails {

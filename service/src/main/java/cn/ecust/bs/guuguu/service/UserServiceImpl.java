@@ -5,7 +5,7 @@ import org.springframework.data.neo4j.template.Neo4jOperations;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import cn.ecust.bs.guuguu.domain.ClientType;
+import cn.ecust.bs.guuguu.ws.domain.ClientType;
 import cn.ecust.bs.guuguu.domain.Meeting;
 import cn.ecust.bs.guuguu.domain.MeetingTime;
 import cn.ecust.bs.guuguu.domain.RelationType;

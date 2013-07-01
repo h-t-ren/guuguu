@@ -3,6 +3,8 @@ package cn.ecust.bs.guuguu.domain;
 import org.springframework.data.neo4j.annotation.EndNode;
 import org.springframework.data.neo4j.annotation.StartNode;
 
+import cn.ecust.bs.guuguu.ws.domain.ClientType;
+
 /**
  * @author Hongtao Ren
  * email: hongtao.ren@gmail.com

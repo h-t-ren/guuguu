@@ -1,0 +1,28 @@
+{
+       "location": "上海华东理工大学励志公寓104",
+       "comment": "每位参加者至少要选择一个时间段",
+       "description": "声称Json对象的一个测试",
+       "creatorEmail": "hongtao.ren@gmail.com",
+       "clientType": "Web",
+       "creator": "hongtao.ren",
+       "timeSlot":
+       [
+           {
+               "date": 1372644639364,
+               "timeSlot": "9:10-10:00"
+           },
+           {
+               "date": 1372644639364,
+               "timeSlot": "19:10-22:00"
+           }
+       ],
+       "title": "去哪里玩呢",
+       "receivers":
+       [
+           "tjma@ecust.edu.cn",
+           "renh@iiasa.ac.at",
+           "53564232@qq.com"
+       ],
+       "ip": "192.168.1.1"
+    }
+

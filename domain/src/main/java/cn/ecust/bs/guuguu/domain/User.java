@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.data.neo4j.annotation.Indexed;
 
+import cn.ecust.bs.guuguu.ws.domain.Role;
+
 /**
  * @author Hongtao Ren
  * email: hongtao.ren@gmail.com

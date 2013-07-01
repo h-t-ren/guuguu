@@ -1,4 +1,4 @@
-package cn.ecust.bs.guuguu.domain;
+package cn.ecust.bs.guuguu.ws.domain;
 
 /**
  * @author Hongtao Ren
