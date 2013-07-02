@@ -14,6 +14,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.BeforeTransaction;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.ecust.bs.guuguu.domain.User;
+import cn.ecust.bs.guuguu.service.UserService;
+import cn.ecust.bs.guuguu.ws.domain.Role;
+
 /**
  * @author Hongtao Ren email: hongtao.ren@gmail.com created: 2013-6-26
  */
@@ -21,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration({"/service-context.xml"})
 @Transactional
 public class DbInitTest {
-
+	  @Autowired private UserService userService;
 	@Autowired
 	private GraphDatabaseService graphDatabaseService;
 
@@ -35,7 +39,14 @@ public class DbInitTest {
 	@Test
 	@Rollback(false)
 	public void populateDatabase() {
-
+		  User systemuser = new User();
+		  systemuser.setLogin("guuguu");
+		  systemuser.setPassword("Guuguu_guuguu2013");
+		  systemuser.setEmail("guuguu2000@yahoo.com");
+	 	   Role[] roles={Role.ROLE_USER};
+	 	  systemuser.setRoles(roles);
+	 	   userService.register(systemuser);
+	  	   
 	}
 
 }
