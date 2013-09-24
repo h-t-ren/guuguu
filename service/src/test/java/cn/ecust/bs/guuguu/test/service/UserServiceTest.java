@@ -1,8 +1,5 @@
 package cn.ecust.bs.guuguu.test.service;
 
-
-import java.util.Calendar;
-import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,9 +11,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import cn.ecust.bs.guuguu.ws.domain.ClientType;
-import cn.ecust.bs.guuguu.domain.Meeting;
-import cn.ecust.bs.guuguu.domain.MeetingTime;
 import cn.ecust.bs.guuguu.ws.domain.Role;
 import cn.ecust.bs.guuguu.domain.User;
 import cn.ecust.bs.guuguu.repo.MeetingRepository;

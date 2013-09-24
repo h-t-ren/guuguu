@@ -26,6 +26,9 @@ public class MeetingForm implements Serializable {
 	private ClientType clientType;
 	private String comment;
 	
+	//only used by MVC
+	private String eventsJson;
+	private String invitations; 
 	public String getTitle() {
 		return title;
 	}
@@ -88,6 +91,18 @@ public class MeetingForm implements Serializable {
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+	public String getEventsJson() {
+		return eventsJson;
+	}
+	public void setEventsJson(String eventsJson) {
+		this.eventsJson = eventsJson;
+	}
+	public String getInvitations() {
+		return invitations;
+	}
+	public void setInvitations(String invitations) {
+		this.invitations = invitations;
 	}
 
 	

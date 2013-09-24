@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+	
+<tiles-definitions>
+	<definition name="home" extends="standardLayout">
+	    <put-attribute name="submenu" value="/WEB-INF/views/submenu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+	</definition>
+	<definition name="/polls/description" extends="standardLayout">
+	    <put-attribute name="submenu" value="/WEB-INF/views/submenu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/description.jsp" />
+	</definition>
+	<definition name="/polls/dates" extends="standardLayout">
+	    <put-attribute name="submenu" value="/WEB-INF/views/submenu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/dates.jsp" />
+	</definition>
+    <definition name="/polls/invitation" extends="standardLayout">
+	    <put-attribute name="submenu" value="/WEB-INF/views/submenu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/invitation.jsp" />
+	</definition>
+	   <definition name="/polls/success" extends="standardLayout">
+	    <put-attribute name="submenu" value="/WEB-INF/views/submenu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/success.jsp" />
+	</definition>
+	   <definition name="/polls/error" extends="standardLayout">
+	    <put-attribute name="submenu" value="/WEB-INF/views/submenu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/error.jsp" />
+	</definition>
+	<definition name="/pollIt" extends="standardLayout">
+	    <put-attribute name="submenu" value="/WEB-INF/views/submenu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/pollIt.jsp" />
+	</definition>
+</tiles-definitions>

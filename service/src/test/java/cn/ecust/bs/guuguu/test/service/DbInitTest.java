@@ -1,6 +1,3 @@
-/**
- * 
- */
 package cn.ecust.bs.guuguu.test.service;
 
 import org.junit.Test;
@@ -43,9 +40,9 @@ public class DbInitTest {
 		  systemuser.setLogin("guuguu");
 		  systemuser.setPassword("Guuguu_guuguu2013");
 		  systemuser.setEmail("guuguu2000@yahoo.com");
-	 	   Role[] roles={Role.ROLE_USER};
+	 	  Role[] roles={Role.ROLE_USER};
 	 	  systemuser.setRoles(roles);
-	 	   userService.register(systemuser);
+	 	  userService.register(systemuser);
 	  	   
 	}
 

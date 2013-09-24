@@ -26,7 +26,12 @@
     <bean id="email_prop" class="org.springframework.beans.factory.config.PropertiesFactoryBean"
         p:location="classpath:/email.properties" />
         
+         
+    <context:property-placeholder properties-ref="application_prop" order="3" ignore-unresolvable="true"/>    
+    <bean id="application_prop" class="org.springframework.beans.factory.config.PropertiesFactoryBean"
+        p:location="classpath:/application.properties" />
         
+           
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="javaMailProperties">
             <props>

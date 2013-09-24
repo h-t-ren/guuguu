@@ -1,20 +1,13 @@
 <html>
-
 <body>
 
-<h3>您好 , 邀请您参加一个活动</h3>
-
- 
-
+<h3>guuguu 活动</h3>
 <div>
-
-请访问如下URL $!{url}
-  本条信息是系统自动发送，请勿回复！
+您好!
+您的朋友 $!{userName} 发起了一次活动
+请访问如下URL <a href="$!{url}" target="_blank">$!{url}</a> 进行投票.
 
 </div>
 
 </body>
-
- 
-
 </html>

@@ -13,15 +13,31 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-
+    -->
 
 	<!-- Imports user-defined @Controller beans that process client requests -->
 	<beans:import resource="controllers.xml" />
 
 	<task:annotation-driven />
+	
+	<!-- Maps view names to Tiles Definitions with support for partial re-rendering -->
+	<beans:bean id="viewResolver" class="org.springframework.js.ajax.AjaxUrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.webflow.mvc.view.FlowAjaxTilesView"/>
+	</beans:bean>
+		
+	<!-- Initializes the Apache Tiles CompositeView system -->
+	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:value>
+				/WEB-INF/**/views.xml
+			</beans:value>
+		</beans:property>
+	</beans:bean>
+	<!--  <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />-->
+	<beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 	
 </beans:beans>

@@ -8,4 +8,5 @@ package cn.ecust.bs.guuguu.domain;
 public class FieldIndex {
 public final static String LOGIN="login";
 public final static String IP="ip";
+public final static String URL="url";
 }

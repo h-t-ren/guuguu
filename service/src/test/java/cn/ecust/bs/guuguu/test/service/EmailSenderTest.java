@@ -28,14 +28,14 @@ public class EmailSenderTest {
 
 	@Test
 	public void testSendEmail() throws Exception {
-	/*	String[] to = new String[] { "conceit_conceit@163.com" };
+		String[] to = new String[] { "conceit_conceit@163.com" };
 		String subject = "测试邮件";
 		String[] files = new String[] { "c:/pass/pass.txt", "c:/22.log" };
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("userName", "任宏涛");
 		model.put("emailAddress", "conceit_conceit@163.com");
 		emailSenderService.sendEmail(to, subject, model, files);
-		*/
+		
 	}
 
 }

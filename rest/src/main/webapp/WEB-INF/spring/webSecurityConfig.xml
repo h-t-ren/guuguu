@@ -8,7 +8,7 @@
 	<http pattern="/" security="none" />
 	<http pattern="/resources/**" security="none" />
 	<http use-expressions="true">
-		<intercept-url pattern="/**" access="isAuthenticated()" />
+	     <!-- <intercept-url pattern="/**" access="isAuthenticated()" />-->
 		<http-basic />
 	</http>
 	<!-- <authentication-manager> <authentication-provider> <user-service> <user 

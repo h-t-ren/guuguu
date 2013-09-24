@@ -1,0 +1,12 @@
+package cn.ecust.bs.guuguu.service;
+
+
+import cn.ecust.bs.guuguu.domain.Meeting;
+import cn.ecust.bs.guuguu.ws.domain.MeetingForm;
+/**
+ * @author Hongtao Ren email: hongtao.ren@gmail.com created: 2013-6-28
+ */
+public interface MeetingService {
+	public void createMeeting(MeetingForm meetingForm) throws Exception;
+	public Meeting findByUrl(String url);
+}

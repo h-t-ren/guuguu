@@ -2,6 +2,8 @@ package cn.ecust.bs.guuguu.domain;
 
 import java.util.Date;
 
+import org.springframework.data.neo4j.annotation.Indexed;
+
 /**
  * @author Hongtao Ren
  * email: hongtao.ren@gmail.com
@@ -15,12 +17,14 @@ public class Meeting extends Node {
 	private String title;
 	private String location;
 	private String description;
-	
+	private String userName;
+	private String userEmail;
 	private Date created;
 	private Date updated;
 	private Date closed;
-	
+	@Indexed(indexName=FieldIndex.URL, unique=true)
 	private String url;
+	
 	private String adminUrl;
 	
 	private String[] receivers;
@@ -83,6 +87,18 @@ public class Meeting extends Node {
 	}
 	public void setReceivers(String[] receivers) {
 		this.receivers = receivers;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 
 }
