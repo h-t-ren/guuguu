@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import cn.ecust.bs.guuguu.repo.UserRepository;
 import cn.ecust.bs.guuguu.service.MeetingService;
+import cn.ecust.bs.guuguu.ws.domain.ClientType;
 import cn.ecust.bs.guuguu.ws.domain.MeetingForm;
 
 @Controller
@@ -48,6 +50,7 @@ public class PollsController {
 		if(cancel!=null)
 			return "/polls/dates";
 		try {
+			meeting.setClientType(ClientType.Web);
 			meetingService.createMeeting(meeting);
 		} catch (Exception e) {
 			e.printStackTrace();

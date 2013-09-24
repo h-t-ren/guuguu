@@ -15,12 +15,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import cn.ecust.bs.guuguu.repo.MeetingRepository;
 import cn.ecust.bs.guuguu.repo.MeetingTimeRepository;
 import cn.ecust.bs.guuguu.repo.UserRepository;
 import cn.ecust.bs.guuguu.ws.domain.ClientType;
 import cn.ecust.bs.guuguu.ws.domain.MeetingForm;
 import cn.ecust.bs.guuguu.ws.domain.Role;
+import cn.ecust.bs.guuguu.ws.domain.TimeSlot;
 import cn.ecust.bs.guuguu.domain.Meeting;
 import cn.ecust.bs.guuguu.domain.MeetingTime;
 import cn.ecust.bs.guuguu.domain.User;
@@ -67,33 +69,51 @@ public class MeetingServiceImpl implements MeetingService {
 		}
 		meetingRepository.save(meeting);
 		String events = meetingForm.getEventsJson();
-		ObjectMapper mapper = new ObjectMapper();
-		TimeSlotJsons tsss = mapper.readValue(events, TimeSlotJsons.class);
-		SimpleDateFormat sdf=new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss",Locale.ENGLISH);
-		int seq = 1;
-		for(TimeSlotJson timeSlotJson:tsss.getTimeSlotJsons())
+		if(events!=null)
 		{
-			String start = timeSlotJson.getStart().replace(" GMT+0800", "");
-			String end = timeSlotJson.getEnd().replace(" GMT+0800", "");
-			Date dStart =sdf.parse(start);
-			Date dEnd =sdf.parse(end);
+			ObjectMapper mapper = new ObjectMapper();
+			TimeSlotJsons tsss = mapper.readValue(events, TimeSlotJsons.class);
+			SimpleDateFormat sdf=new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss",Locale.ENGLISH);
+			int seq = 1;
+			for(TimeSlotJson timeSlotJson:tsss.getTimeSlotJsons())
+			{
+				String start = timeSlotJson.getStart().replace(" GMT+0800", "");
+				String end = timeSlotJson.getEnd().replace(" GMT+0800", "");
+				Date dStart =sdf.parse(start);
+				Date dEnd =sdf.parse(end);
 
-			Calendar startCal=Calendar.getInstance(); 
-			startCal.setTime(dStart);
-			
-			Calendar endCal=Calendar.getInstance(); 
-			endCal.setTime(dEnd);
-			
-			MeetingTime t = new MeetingTime();
-			t.setMeeting(meeting);
-			t.setSeqence(seq);
-			t.setDate(dStart);
-			t.setTimeSlot(startCal.get(Calendar.HOUR_OF_DAY)+":"+startCal.get(Calendar.MINUTE)+"-"+endCal.get(Calendar.HOUR_OF_DAY)+":"+endCal.get(Calendar.MINUTE));
-			meetingTimeRepository.save(t);
-			seq++;
+				Calendar startCal=Calendar.getInstance(); 
+				startCal.setTime(dStart);
+				
+				Calendar endCal=Calendar.getInstance(); 
+				endCal.setTime(dEnd);
+				
+				MeetingTime t = new MeetingTime();
+				t.setMeeting(meeting);
+				t.setSeqence(seq);
+				t.setDate(dStart);
+				t.setTimeSlot(startCal.get(Calendar.HOUR_OF_DAY)+":"+startCal.get(Calendar.MINUTE)+"-"+endCal.get(Calendar.HOUR_OF_DAY)+":"+endCal.get(Calendar.MINUTE));
+				meetingTimeRepository.save(t);
+				seq++;
+			}
 		}
+		else
+		{
+			int seq=1;
+			for(TimeSlot ts:meetingForm.getTimeSlot())
+			{
+				MeetingTime t = new MeetingTime();
+				t.setMeeting(meeting);
+				t.setSeqence(seq);
+				t.setDate(ts.getDate());
+				t.setTimeSlot(ts.getTimeSlot());
+				meetingTimeRepository.save(t);
+				seq++;
+			}
+		}
+
 		userService.createOrParticipateMeeting(user, meeting,
-				meetingForm.getIp(), ClientType.Web, meetingForm.getComment(),
+				meetingForm.getIp(), meetingForm.getClientType(), meetingForm.getComment(),
 				true);
 		String subject = "邀请您参加一个活动";
 		
@@ -114,7 +134,6 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 	@Override @Transactional(readOnly=true)
 	public Meeting findByUrl(String url) {
-		
 		return meetingRepository.findByUrl(url);
 	}
 

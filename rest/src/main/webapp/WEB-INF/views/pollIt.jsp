@@ -22,7 +22,7 @@
 		</style>
 
 
- <p><span class="special3">活动发起者${meeting.userName}</span></p>
+ <p><span class="special3">活动发起者:${meeting.userName}</span></p>
  <p><span class="special3">地点:${meeting.location}</span></p>
  <p><span class="special3">活动描述:${meeting.description}</span></p>
  <p><span class="warning"><c:if test="${message!=null}">${message}</c:if></span></p>
