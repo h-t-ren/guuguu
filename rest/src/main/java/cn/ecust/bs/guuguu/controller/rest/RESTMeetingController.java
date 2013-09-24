@@ -1,20 +1,14 @@
 package cn.ecust.bs.guuguu.controller.rest;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import cn.ecust.bs.guuguu.domain.Meeting;
-import cn.ecust.bs.guuguu.domain.MeetingTime;
 import cn.ecust.bs.guuguu.domain.User;
 import cn.ecust.bs.guuguu.repo.MeetingRepository;
 import cn.ecust.bs.guuguu.repo.MeetingTimeRepository;
@@ -26,7 +20,7 @@ import cn.ecust.bs.guuguu.ws.domain.ClientType;
 import cn.ecust.bs.guuguu.ws.domain.MeetingForm;
 import cn.ecust.bs.guuguu.ws.domain.PollForm;
 import cn.ecust.bs.guuguu.ws.domain.Role;
-import cn.ecust.bs.guuguu.ws.domain.TimeSlot;
+
 
 @Controller
 @Transactional(readOnly = true)
