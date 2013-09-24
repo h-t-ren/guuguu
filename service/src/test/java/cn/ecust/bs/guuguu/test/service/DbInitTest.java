@@ -40,7 +40,7 @@ public class DbInitTest {
 		  systemuser.setLogin("guuguu");
 		  systemuser.setPassword("Guuguu_guuguu2013");
 		  systemuser.setEmail("guuguu2000@yahoo.com");
-	 	  Role[] roles={Role.ROLE_USER};
+	 	  Role[] roles={Role.ROLE_USER,Role.ROLE_ADMIN};
 	 	  systemuser.setRoles(roles);
 	 	  userService.register(systemuser);
 	  	   

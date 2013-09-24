@@ -126,11 +126,23 @@ public class MeetingServiceImpl implements MeetingService {
 			model.put("userName", meetingForm.getCreator());
 			String email =st.nextToken();
 			model.put("url", urlContext+meeting.getCreated().getTime()+"/email/"+email);
+			invitationLst.add(email);
 			emailSenderService.sendEmail(new String[]{email}, subject, model, null);
 		}
 		invitationLst.add(meetingForm.getCreatorEmail());
-		
-		
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("userName", meetingForm.getCreator());
+		model.put("url", urlContext+meeting.getCreated().getTime()+"/email/"+meetingForm.getCreatorEmail());
+		emailSenderService.sendEmail(new String[]{meetingForm.getCreatorEmail()}, subject, model, null);
+		String[] receivers = new String[invitationLst.size()];
+		int i=0;
+		for(String receiver:invitationLst)
+		{
+			receivers[i]=receiver;
+			i++;
+		}
+		meeting.setReceivers(receivers);
+		meetingRepository.save(meeting);
 	}
 	@Override @Transactional(readOnly=true)
 	public Meeting findByUrl(String url) {
