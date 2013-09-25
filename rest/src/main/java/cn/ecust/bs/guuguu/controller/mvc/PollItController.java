@@ -39,7 +39,7 @@ public class PollItController {
 	@Autowired private UserService userService;
 	@Value("#{application_prop['urlContext']}") private String urlContext;
 
-	@RequestMapping(value="/pollIt/{timeStamp}/email/{email}",method=RequestMethod.GET)
+	@RequestMapping(value="/pollIt/{timeStamp}/email/{email}/",method=RequestMethod.GET)
 	public String populate(@PathVariable long timeStamp,@PathVariable String email, Model model)
 	{
 		Meeting meeting =meetingService.findByUrl(urlContext+timeStamp);
@@ -77,7 +77,7 @@ public class PollItController {
 		return "/pollIt";
 	}
 	
-	@RequestMapping(value="/pollIt/{timeStamp}/email/{email}",method=RequestMethod.POST)
+	@RequestMapping(value="/pollIt/{timeStamp}/email/{email}/",method=RequestMethod.POST)
 	public String save(@PathVariable long timeStamp,@PathVariable String email,HttpServletRequest request, Model model)
 	{
 		Meeting meeting =meetingService.findByUrl(urlContext+timeStamp);
@@ -102,7 +102,7 @@ public class PollItController {
 	    	}
 	    }
 		
-		return "redirect:/pollIt/{timeStamp}/email/{email}";
+		return "redirect:/pollIt/{timeStamp}/email/{email}/";
 	}
 
 }

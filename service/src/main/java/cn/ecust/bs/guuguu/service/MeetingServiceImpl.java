@@ -48,6 +48,7 @@ public class MeetingServiceImpl implements MeetingService {
 	@Value("#{application_prop['urlContext']}") private String urlContext;
 	@Override @Transactional
 	public void createMeeting(MeetingForm meetingForm) throws Exception {
+	
 		Meeting meeting = new Meeting();
 		meeting.setTitle(meetingForm.getTitle());
 		meeting.setLocation(meetingForm.getLocation());
@@ -125,14 +126,14 @@ public class MeetingServiceImpl implements MeetingService {
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("userName", meetingForm.getCreator());
 			String email =st.nextToken();
-			model.put("url", urlContext+meeting.getCreated().getTime()+"/email/"+email);
+			model.put("url", urlContext+meeting.getCreated().getTime()+"/email/"+email+"/");
 			invitationLst.add(email);
 			emailSenderService.sendEmail(new String[]{email}, subject, model, null);
 		}
 		invitationLst.add(meetingForm.getCreatorEmail());
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("userName", meetingForm.getCreator());
-		model.put("url", urlContext+meeting.getCreated().getTime()+"/email/"+meetingForm.getCreatorEmail());
+		model.put("url", urlContext+meeting.getCreated().getTime()+"/email/"+meetingForm.getCreatorEmail()+"/");
 		emailSenderService.sendEmail(new String[]{meetingForm.getCreatorEmail()}, subject, model, null);
 		String[] receivers = new String[invitationLst.size()];
 		int i=0;

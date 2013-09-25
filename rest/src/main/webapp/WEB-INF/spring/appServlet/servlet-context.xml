@@ -38,6 +38,5 @@
 		</beans:property>
 	</beans:bean>
 	<!--  <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />-->
-	<beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 	
 </beans:beans>

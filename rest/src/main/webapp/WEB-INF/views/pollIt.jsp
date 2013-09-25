@@ -48,6 +48,14 @@
 				</c:forEach>
 			 </tr>
 		</c:forEach>
+		<tr>
+				<td>投票数</td>
+				<c:forEach var="meetingTime" items="${meetingTimes}">
+				 <td><c:if test="${meetingTime.count!=null}">${meetingTime.count}</c:if>
+				 <c:if test="${meetingTime.count==null}">0</c:if></td>
+				</c:forEach>
+		</tr>
+		
 		<c:if test="${message==null}">
 	      <tr>
 				<td><input type="text" value="${email}" name="email"></td>
