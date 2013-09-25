@@ -20,7 +20,7 @@ public class UserInfoClient {
     String url = "http://localhost:8080/guuguu-rest/rest/user/53564232@qq.com/info";
     GuuGuuUser user = (GuuGuuUser)restTemplate.getForObject(url, GuuGuuUser.class); 
   
-    System.out.println("user name: " + user.getName()+", email: " + user.getEmail()+", mobile: " + user.getMobile());
+    System.out.println("user name: " + user.getUserName()+", email: " + user.getEmail()+", mobile: " + user.getMobile());
    
     JsonPrinter.print(user);
 }

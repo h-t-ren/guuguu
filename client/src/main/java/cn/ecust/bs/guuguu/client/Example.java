@@ -1,9 +1,4 @@
 package cn.ecust.bs.guuguu.client;
-import java.io.IOException;
-
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;

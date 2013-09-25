@@ -63,7 +63,7 @@ public class MeetingServiceImpl implements MeetingService {
 			user.setCreated(new Date());
 			user.setEmail(meetingForm.getCreatorEmail());
 			user.setLogin(meetingForm.getCreatorEmail());
-			user.setName(meetingForm.getCreator());
+			user.setUserName(meetingForm.getCreator());
 			user.setRoles(new Role[] { Role.ROLE_USER });
 			userRepository.save(user);
 		}

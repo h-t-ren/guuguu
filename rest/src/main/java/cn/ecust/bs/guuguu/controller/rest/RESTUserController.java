@@ -29,7 +29,7 @@ public class RESTUserController {
 	public @ResponseBody GuuGuuUser userInfo(@PathVariable("login") String login) {
 		User user= userRepository.findByLogin(login);
 		GuuGuuUser gu = new GuuGuuUser();
-		gu.setName(user.getName());
+		gu.setUserName(user.getUserName());
 		gu.setEmail(user.getEmail());
 		gu.setMobile(user.getMobile());
 		return gu;
@@ -46,7 +46,8 @@ public class RESTUserController {
 			 usera = new User();
 			 usera.setCreated(new Date());
 			 usera.setEmail(user.getEmail());
-			 usera.setName(user.getName());
+		//	 System.out.println("user name: " + user.getUserName());
+			 usera.setUserName(user.getUserName());
 			 usera.setLogin(user.getEmail());
 			 usera.setMobile(user.getMobile());
 			 usera.setRoles(new Role[] { Role.ROLE_USER });

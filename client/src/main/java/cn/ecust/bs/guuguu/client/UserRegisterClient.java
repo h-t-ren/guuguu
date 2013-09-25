@@ -19,7 +19,7 @@ public class UserRegisterClient {
     String url = "http://localhost:8080/guuguu-rest/rest/user/register";
     GuuGuuUser user = new GuuGuuUser();
     user.setEmail("53564232@qq.com");
-    user.setName("任宏涛");
+    user.setUserName("任宏涛");
     user.setMobile("18916488290");
     user.setPassword("18916488290");
     Result result = (Result)restTemplate.postForObject(url, user, Result.class);
