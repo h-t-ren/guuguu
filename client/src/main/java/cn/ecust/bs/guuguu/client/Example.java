@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.xml.transform.StringResult;
 
 import cn.ecust.bs.guuguu.ws.domain.MeetingForm;
-public class ReadClient {
+public class Example {
 
 
   public static void main(String[] args) {
@@ -31,19 +31,7 @@ public class ReadClient {
     String jsonurl = "http://localhost:8080/guuguu-rest/rest/example/json/meeting";
     MeetingForm meeting1 = (MeetingForm)restTemplate.getForObject(jsonurl, MeetingForm.class);
     
-    ObjectMapper mapper = new ObjectMapper();
-    try {
-		String json = mapper.writeValueAsString(meeting1);
-		System.out.println(json);
-	} catch (JsonGenerationException e) {
-		e.printStackTrace();
-	} catch (JsonMappingException e) {
-		e.printStackTrace();
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
-    
-    
+    JsonPrinter.print(meeting1);
     
 }
 }

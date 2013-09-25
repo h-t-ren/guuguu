@@ -36,12 +36,12 @@ public class UserServiceTest {
   @Test @Transactional
   @Rollback(false)
   public void testRegisterUser() throws Exception {
-	  User me = new User();
+	 /*  User me = new User();
  	   me.setLogin("hongtao.ren");
  	   me.setPassword("1977921");
-      me.setEmail("hongtao.ren@gmail.com");
+       me.setEmail("hongtao.ren@gmail.com");
  	   Role[] roles={Role.ROLE_USER};
-      me.setRoles(roles);
+       me.setRoles(roles);
  	   userService.register(me);
   	   
   	   User user =  userRepository.findByLogin("hongtao.ren");
@@ -56,6 +56,7 @@ public class UserServiceTest {
   	   Role[] roles1={Role.ROLE_USER};
        tieju.setRoles(roles1);
   	   userService.register(tieju);
+  	   */
   }
   
   /*

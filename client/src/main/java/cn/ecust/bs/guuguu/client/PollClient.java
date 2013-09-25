@@ -1,16 +1,10 @@
 package cn.ecust.bs.guuguu.client;
 
-import java.util.Date;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.client.RestTemplate;
-
 import cn.ecust.bs.guuguu.ws.domain.ClientType;
-import cn.ecust.bs.guuguu.ws.domain.MeetingForm;
 import cn.ecust.bs.guuguu.ws.domain.PollForm;
-import cn.ecust.bs.guuguu.ws.domain.TimeSlot;
-
 
 public class PollClient {
 
