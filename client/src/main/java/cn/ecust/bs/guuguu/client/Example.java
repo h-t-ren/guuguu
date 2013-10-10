@@ -13,7 +13,7 @@ public class Example {
 
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/appContext.xml");
     RestTemplate restTemplate = applicationContext.getBean("restTemplate", RestTemplate.class);
-    String xmlurl = "http://localhost:8080/guuguu-rest/rest/example/xml/meeting";
+    String xmlurl = ServerURL.restURL+"example/xml/meeting";
     MeetingForm meeting = (MeetingForm)restTemplate.getForObject(xmlurl, MeetingForm.class); 
   
     //object to XML
@@ -23,7 +23,7 @@ public class Example {
     System.out.println(result.toString());
     
     //object to JSON
-    String jsonurl = "http://localhost:8080/guuguu-rest/rest/example/json/meeting";
+    String jsonurl = ServerURL.restURL+"example/json/meeting";
     MeetingForm meeting1 = (MeetingForm)restTemplate.getForObject(jsonurl, MeetingForm.class);
     
     JsonPrinter.print(meeting1);

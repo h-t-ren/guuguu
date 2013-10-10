@@ -22,7 +22,7 @@ public class MeetingClient {
 
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/appContext.xml");
     RestTemplate restTemplate = applicationContext.getBean("restTemplate", RestTemplate.class);
-    String url = "http://localhost:8080/guuguu-rest/rest/meeting/create";
+    String url = ServerURL.restURL+"rest/meeting/create";
     MeetingForm meeting = populateMeeting();
     restTemplate.postForObject(url, meeting, MeetingForm.class);
     

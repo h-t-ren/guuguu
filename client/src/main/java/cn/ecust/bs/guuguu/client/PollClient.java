@@ -3,6 +3,7 @@ package cn.ecust.bs.guuguu.client;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.client.RestTemplate;
+
 import cn.ecust.bs.guuguu.ws.domain.ClientType;
 import cn.ecust.bs.guuguu.ws.domain.PollForm;
 
@@ -14,7 +15,7 @@ public class PollClient {
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/appContext.xml");
     RestTemplate restTemplate = applicationContext.getBean("restTemplate", RestTemplate.class);
     
-    String pollUrl = "http://localhost:8080/guuguu-rest/rest/meeting/poll";
+    String pollUrl =ServerURL.restURL+ "meeting/poll";
     PollForm pollForm =populatePoll();
     restTemplate.postForObject(pollUrl, pollForm, PollForm.class);
     
