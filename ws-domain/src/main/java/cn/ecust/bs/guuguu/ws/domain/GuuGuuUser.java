@@ -2,14 +2,14 @@ package cn.ecust.bs.guuguu.ws.domain;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlRootElement;
+//import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @author Hongtao Ren
  * email: hongtao.ren@gmail.com
  * created: 2013-9-24
  */
-@XmlRootElement
+//@XmlRootElement
 public class GuuGuuUser implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

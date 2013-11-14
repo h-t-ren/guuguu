@@ -2,7 +2,7 @@ package cn.ecust.bs.guuguu.ws.domain;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlRootElement;
+//import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * email: hongtao.ren@gmail.com
  * created: 2013-6-29
  */
-@XmlRootElement
+//@XmlRootElement
 public class MeetingForm implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
