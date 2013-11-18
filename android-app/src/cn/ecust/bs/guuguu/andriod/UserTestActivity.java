@@ -1,7 +1,5 @@
 package cn.ecust.bs.guuguu.andriod;
 
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -70,10 +68,8 @@ public class UserTestActivity extends AbstractAsyncActivity {
 		@Override
 		protected GuuGuuUser doInBackground(Void... params) {
 			try {
-				user=getUserFromView();
-				RestTemplate restTemplate = new RestTemplate();
-                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
-                user = restTemplate.getForObject(URLS.userInfoURL, GuuGuuUser.class,user.getEmail());
+				user = getUserFromView();
+                user = getRestTemplate().getForObject(URLS.userInfoURL, GuuGuuUser.class,user.getEmail());
 				return user;
 			} catch (Exception e) {
 				Log.e(TAG, e.getMessage(), e);
@@ -97,9 +93,7 @@ public class UserTestActivity extends AbstractAsyncActivity {
 		protected Result doInBackground(Void... params) {
 			try {
 				user=getUserFromView();
-				RestTemplate restTemplate = new RestTemplate();
-                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
-                Result result =restTemplate.postForObject(URLS.userRegisterURL, user, 
+                Result result = getRestTemplate().postForObject(URLS.userRegisterURL, user, 
                 		Result.class);
 				return result;
 			} catch (Exception e) {

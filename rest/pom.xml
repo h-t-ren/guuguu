@@ -133,7 +133,6 @@
 
 		<!-- Jackson JSON Processor -->
 
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
