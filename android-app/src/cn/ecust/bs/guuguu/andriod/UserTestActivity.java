@@ -56,6 +56,7 @@ public class UserTestActivity extends AbstractAsyncActivity {
     	 user.setUserName(userName);
     	 return user;
     }
+    
     private void refreshResults(GuuGuuUser user)
     {
     	((EditText)findViewById(R.id.userName)).setText(user.getUserName());
@@ -70,10 +71,9 @@ public class UserTestActivity extends AbstractAsyncActivity {
 		protected GuuGuuUser doInBackground(Void... params) {
 			try {
 				user=getUserFromView();
-				final String url = "http://219.220.221.183:8080/guuguu-rest/rest/user/{email}/info";
 				RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
-                user = restTemplate.getForObject(url, GuuGuuUser.class,user.getEmail());
+                user = restTemplate.getForObject(URLS.userInfoURL, GuuGuuUser.class,user.getEmail());
 				return user;
 			} catch (Exception e) {
 				Log.e(TAG, e.getMessage(), e);
@@ -97,10 +97,9 @@ public class UserTestActivity extends AbstractAsyncActivity {
 		protected Result doInBackground(Void... params) {
 			try {
 				user=getUserFromView();
-				final String url = "http://219.220.221.183:8080/guuguu-rest/rest/user/register";
 				RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
-                Result result =restTemplate.postForObject(url, user, 
+                Result result =restTemplate.postForObject(URLS.userRegisterURL, user, 
                 		Result.class);
 				return result;
 			} catch (Exception e) {

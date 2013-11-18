@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>cn.edu.ecust.bs.guuguu</groupId>
 	<artifactId>android-app</artifactId>
 	<version>0.1</version>
@@ -10,9 +9,8 @@
 	<url>http://xXXXX.XXXX</url>
 	<inceptionYear>2013</inceptionYear>
 
-
 	<properties>
-		<android-platform>17</android-platform>
+		<android-platform>19</android-platform>
 		<android-maven-plugin-version>3.6.0</android-maven-plugin-version>
 		<maven-compiler-plugin-version>3.1</maven-compiler-plugin-version>
 		<java-version>1.6</java-version>
@@ -42,9 +40,6 @@
 			<artifactId>spring-android-rest-template</artifactId>
 			<version>${org.springframework.android-version}</version>
 		</dependency>
-	
-
-
 
 		<!-- Jackson JSON Processor -->
 		<dependency>
