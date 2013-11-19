@@ -2,6 +2,7 @@ package cn.ecust.bs.guuguu.controller.rest;
 
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,7 +39,7 @@ public class RESTMeetingController {
 	@Autowired
 	private UserService userService;
 	@Autowired private MeetingService meetingService;
-	@RequestMapping(value = "create", method = RequestMethod.POST,produces="application/json")
+	@RequestMapping(value = "create", method = RequestMethod.POST,produces= MediaType.APPLICATION_JSON_VALUE,consumes= MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(readOnly = false)
 	public @ResponseBody
 	MeetingForm createMeeting(@RequestBody MeetingForm meetingForm) {
@@ -52,7 +53,7 @@ public class RESTMeetingController {
 	}
 	
 	
-	@RequestMapping(value = "poll", method = RequestMethod.POST,produces="application/json")
+	@RequestMapping(value = "poll", method = RequestMethod.POST,produces= MediaType.APPLICATION_JSON_VALUE,consumes= MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(readOnly = false)
 	public @ResponseBody
 	PollForm pollMeeting(@RequestBody PollForm pollForm) {

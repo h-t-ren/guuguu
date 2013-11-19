@@ -3,6 +3,7 @@ package cn.ecust.bs.guuguu.controller.rest;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,7 @@ public class RESTUserController {
 	
 	@Autowired private UserRepository userRepository;
 	@Autowired private UserService userService;
-	@RequestMapping(value="{login}/info", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="{login}/info", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody GuuGuuUser userInfo(@PathVariable("login") String login) {
 		User user= userRepository.findByLogin(login);
 		GuuGuuUser gu = new GuuGuuUser();
@@ -35,7 +36,7 @@ public class RESTUserController {
 		return gu;
 	}
 
-	@RequestMapping(value = "register", method = RequestMethod.POST,produces="application/json")
+	@RequestMapping(value = "register", method = RequestMethod.POST,produces= MediaType.APPLICATION_JSON_VALUE,consumes= MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(readOnly = false)
 	public @ResponseBody
 	Result register(@RequestBody GuuGuuUser user) {
