@@ -16,7 +16,7 @@ public class UserRegisterClient {
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/appContext.xml");
     RestTemplate restTemplate = applicationContext.getBean("restTemplate", RestTemplate.class);
     
-    String url = ServerURL.restURL+"rest/user/register";
+    String url = ServerURL.restURL+"/user/register";
     GuuGuuUser user = new GuuGuuUser();
     user.setEmail("53564232@qq.com");
     user.setUserName("任宏涛");

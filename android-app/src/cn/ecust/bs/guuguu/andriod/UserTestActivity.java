@@ -78,7 +78,7 @@ public class UserTestActivity extends AbstractAsyncActivity {
 			try {
 				user = getUserFromView();
                // user = getRestTemplate().getForObject(URLS.userInfoURL, GuuGuuUser.class,user.getEmail());
-                ResponseEntity<GuuGuuUser> response = getRestTemplate().exchange(URLS.userInfoURL, HttpMethod.GET, new HttpEntity<Object>(getHeaders(username,password)), GuuGuuUser.class);
+                ResponseEntity<GuuGuuUser> response = getRestTemplate().exchange(URLS.userInfoURL, HttpMethod.GET, new HttpEntity<Object>(getHeaders(username,password)), GuuGuuUser.class,user.getEmail());
                 return response.getBody();
 			} catch (Exception e) {
 				Log.e(TAG, e.getMessage(), e);
@@ -102,9 +102,10 @@ public class UserTestActivity extends AbstractAsyncActivity {
 		protected Result doInBackground(Void... params) {
 			try {
 				user=getUserFromView();
-             //   Result result = getRestTemplate().postForObject(URLS.userRegisterURL, user, 
-              //  		Result.class);
-                ResponseEntity<Result> response = getRestTemplate().exchange(URLS.userRegisterURL, HttpMethod.POST, new HttpEntity<Object>(getHeaders(username,password)), Result.class,user);
+              //  Result result = getRestTemplate().postForObject(URLS.userRegisterURL, user, 
+               //		Result.class);
+				HttpEntity<GuuGuuUser> requestEntity = new HttpEntity<GuuGuuUser>(user, getHeaders(username,password));
+                ResponseEntity<Result> response = getRestTemplate().exchange(URLS.userRegisterURL, HttpMethod.POST, requestEntity,Result.class);
 				return response.getBody();
 			} catch (Exception e) {
 				Log.e(TAG, e.getMessage(), e);
