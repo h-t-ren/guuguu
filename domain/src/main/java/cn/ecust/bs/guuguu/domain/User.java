@@ -74,4 +74,5 @@ public class User extends Node {
 	public void setCreated(Date created) {
 		this.created = created;
 	}
+
 }

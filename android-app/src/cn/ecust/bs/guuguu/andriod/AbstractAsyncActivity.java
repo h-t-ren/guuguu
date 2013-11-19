@@ -1,5 +1,11 @@
 package cn.ecust.bs.guuguu.andriod;
 
+import java.util.Collections;
+
+import org.springframework.http.HttpAuthentication;
+import org.springframework.http.HttpBasicAuthentication;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
@@ -42,7 +48,17 @@ public abstract class AbstractAsyncActivity extends Activity implements
 		}
 	}
 
+	
+	public HttpHeaders getHeaders(String username, String password)
+	{
+		HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+		HttpHeaders requestHeaders = new HttpHeaders();
+		requestHeaders.setAuthorization(authHeader);
+		requestHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        return requestHeaders;
+	}
 	public RestTemplate getRestTemplate() {
+		
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(
 				new MappingJacksonHttpMessageConverter());

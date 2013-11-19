@@ -1,5 +1,9 @@
 package cn.ecust.bs.guuguu.andriod;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +17,10 @@ import cn.ecust.bs.guuguu.ws.domain.Result;
 public class UserTestActivity extends AbstractAsyncActivity {
 
 	private GuuGuuUser user;
+	private String username="hongtao.ren@gmail.com";
+	private String password="1977921";
+	//如果QQ登陆 username应该是OpenId, password 是accesstoken, 每次QQ登陆成功之后需要更新password
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +77,9 @@ public class UserTestActivity extends AbstractAsyncActivity {
 		protected GuuGuuUser doInBackground(Void... params) {
 			try {
 				user = getUserFromView();
-                user = getRestTemplate().getForObject(URLS.userInfoURL, GuuGuuUser.class,user.getEmail());
-				return user;
+               // user = getRestTemplate().getForObject(URLS.userInfoURL, GuuGuuUser.class,user.getEmail());
+                ResponseEntity<GuuGuuUser> response = getRestTemplate().exchange(URLS.userInfoURL, HttpMethod.GET, new HttpEntity<Object>(getHeaders(username,password)), GuuGuuUser.class);
+                return response.getBody();
 			} catch (Exception e) {
 				Log.e(TAG, e.getMessage(), e);
 			}
@@ -93,9 +102,10 @@ public class UserTestActivity extends AbstractAsyncActivity {
 		protected Result doInBackground(Void... params) {
 			try {
 				user=getUserFromView();
-                Result result = getRestTemplate().postForObject(URLS.userRegisterURL, user, 
-                		Result.class);
-				return result;
+             //   Result result = getRestTemplate().postForObject(URLS.userRegisterURL, user, 
+              //  		Result.class);
+                ResponseEntity<Result> response = getRestTemplate().exchange(URLS.userRegisterURL, HttpMethod.POST, new HttpEntity<Object>(getHeaders(username,password)), Result.class,user);
+				return response.getBody();
 			} catch (Exception e) {
 				Log.e(TAG, e.getMessage(), e);
 			}

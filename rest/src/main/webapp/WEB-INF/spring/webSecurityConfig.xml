@@ -6,15 +6,18 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 	<http pattern="/" security="none" />
-	<http pattern="/resources/**" security="none" />
+    <http pattern="/resources/**" security="none" />
 	<http use-expressions="true">
-	     <!-- <intercept-url pattern="/**" access="isAuthenticated()" />-->
-		<http-basic />
+	<intercept-url pattern="/rest/**" access="isAuthenticated()" />
+ <!--<intercept-url pattern="/**" access="isAuthenticated()" />-->
+	
+	<http-basic />
 	</http>
-	<!-- <authentication-manager> <authentication-provider> <user-service> <user 
+	
+	 <!--  <authentication-manager> <authentication-provider> <user-service> <user 
 		name="user1" password="user1Pass" authorities="ROLE_USER" /> </user-service> 
 		</authentication-provider> </authentication-manager> 
-     -->
+      -->
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">
 			<password-encoder hash="md5">

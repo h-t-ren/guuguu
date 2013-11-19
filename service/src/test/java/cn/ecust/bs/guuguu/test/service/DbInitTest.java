@@ -38,6 +38,7 @@ public class DbInitTest {
 	public void populateDatabase() {
 		  User systemuser = new User();
 		  systemuser.setLogin("guuguu");
+		  systemuser.setUserName("System User");
 		  systemuser.setPassword("Guuguu_guuguu2013");
 		  systemuser.setEmail("guuguu2000@yahoo.com");
 	 	  Role[] roles={Role.ROLE_USER,Role.ROLE_ADMIN};
