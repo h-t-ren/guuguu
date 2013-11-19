@@ -38,7 +38,7 @@ public class RESTMeetingController {
 	@Autowired
 	private UserService userService;
 	@Autowired private MeetingService meetingService;
-	@RequestMapping(value = "create", method = RequestMethod.POST)
+	@RequestMapping(value = "create", method = RequestMethod.POST,produces="application/json")
 	@Transactional(readOnly = false)
 	public @ResponseBody
 	MeetingForm createMeeting(@RequestBody MeetingForm meetingForm) {
@@ -52,7 +52,7 @@ public class RESTMeetingController {
 	}
 	
 	
-	@RequestMapping(value = "poll", method = RequestMethod.POST)
+	@RequestMapping(value = "poll", method = RequestMethod.POST,produces="application/json")
 	@Transactional(readOnly = false)
 	public @ResponseBody
 	PollForm pollMeeting(@RequestBody PollForm pollForm) {
