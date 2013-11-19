@@ -105,7 +105,8 @@ public class UserTestActivity extends AbstractAsyncActivity {
 				user=getUserFromView();
               //  Result result = getRestTemplate().postForObject(URLS.userRegisterURL, user, 
                //		Result.class);
-				HttpEntity<GuuGuuUser> requestEntity = new HttpEntity<GuuGuuUser>(user, getHeaders(username,password));
+			//	HttpEntity<GuuGuuUser> requestEntity = new HttpEntity<GuuGuuUser>(user, getHeaders(username,password));
+				HttpEntity<GuuGuuUser> requestEntity = new HttpEntity<GuuGuuUser>(user);
                 ResponseEntity<Result> response = getRestTemplate().exchange(URLS.userRegisterURL, HttpMethod.POST, requestEntity,Result.class);
 				return response.getBody();
 			} catch (Exception e) {
