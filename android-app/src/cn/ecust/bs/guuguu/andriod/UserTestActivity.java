@@ -60,6 +60,7 @@ public class UserTestActivity extends AbstractAsyncActivity {
     	 user.setMobile(mobile);
     	 user.setPassword(password);
     	 user.setUserName(userName);
+    	 user.setLogin(email);
     	 return user;
     }
     
@@ -78,7 +79,7 @@ public class UserTestActivity extends AbstractAsyncActivity {
 			try {
 				user = getUserFromView();
                // user = getRestTemplate().getForObject(URLS.userInfoURL, GuuGuuUser.class,user.getEmail());
-                ResponseEntity<GuuGuuUser> response = getRestTemplate().exchange(URLS.userInfoURL, HttpMethod.GET, new HttpEntity<Object>(getHeaders(username,password)), GuuGuuUser.class,user.getEmail());
+                ResponseEntity<GuuGuuUser> response = getRestTemplate().exchange(URLS.userInfoURL, HttpMethod.GET, new HttpEntity<Object>(getHeaders(username,password)), GuuGuuUser.class,user.getLogin());
                 return response.getBody();
 			} catch (Exception e) {
 				Log.e(TAG, e.getMessage(), e);

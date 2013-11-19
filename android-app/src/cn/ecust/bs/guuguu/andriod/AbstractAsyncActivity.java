@@ -1,12 +1,9 @@
 package cn.ecust.bs.guuguu.andriod;
 
-import java.util.Collections;
-
 import org.springframework.http.ContentCodingType;
 import org.springframework.http.HttpAuthentication;
 import org.springframework.http.HttpBasicAuthentication;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 

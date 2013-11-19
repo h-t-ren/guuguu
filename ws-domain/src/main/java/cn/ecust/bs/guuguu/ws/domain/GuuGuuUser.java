@@ -14,6 +14,7 @@ public class GuuGuuUser implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private String login;
 	private String password;
 	private String userName;
 	private String email;
@@ -41,6 +42,12 @@ public class GuuGuuUser implements Serializable {
 	}
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	
 }

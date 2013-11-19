@@ -37,7 +37,7 @@ public class DbInitTest {
 	@Rollback(false)
 	public void populateDatabase() {
 		  User systemuser = new User();
-		  systemuser.setLogin("guuguu");
+		  systemuser.setLogin("guuguu2000@yahoo.com");
 		  systemuser.setUserName("System User");
 		  systemuser.setPassword("Guuguu_guuguu2013");
 		  systemuser.setEmail("guuguu2000@yahoo.com");

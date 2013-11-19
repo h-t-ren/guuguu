@@ -40,7 +40,7 @@ public class RESTUserController {
 	@Transactional(readOnly = false)
 	public @ResponseBody
 	Result register(@RequestBody GuuGuuUser user) {
-		 User usera =  userRepository.findByLogin(user.getEmail());
+		 User usera =  userRepository.findByLogin(user.getLogin());
 		 Result result =new Result();
 		 //reg
 		 if (usera == null) {
@@ -49,7 +49,7 @@ public class RESTUserController {
 			 usera.setEmail(user.getEmail());
 		//	 System.out.println("user name: " + user.getUserName());
 			 usera.setUserName(user.getUserName());
-			 usera.setLogin(user.getEmail());
+			 usera.setLogin(user.getLogin());
 			 usera.setMobile(user.getMobile());
 			 usera.setRoles(new Role[] { Role.ROLE_USER });
 			 usera.setPassword(user.getPassword());
