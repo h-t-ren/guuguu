@@ -36,7 +36,7 @@ public class RESTUserController {
 		return gu;
 	}
 
-	@RequestMapping(value = "register", method = RequestMethod.POST,produces= MediaType.APPLICATION_JSON_VALUE,consumes= MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "register", method = RequestMethod.POST)
 	@Transactional(readOnly = false)
 	public @ResponseBody
 	Result register(@RequestBody GuuGuuUser user) {
