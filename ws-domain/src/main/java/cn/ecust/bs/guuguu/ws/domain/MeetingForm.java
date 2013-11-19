@@ -13,7 +13,7 @@ import java.io.Serializable;
 //@XmlRootElement
 public class MeetingForm implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+	private Long id;
 	private String title;
 	private String location;
 	private String description;
@@ -103,6 +103,12 @@ public class MeetingForm implements Serializable {
 	}
 	public void setInvitations(String invitations) {
 		this.invitations = invitations;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	

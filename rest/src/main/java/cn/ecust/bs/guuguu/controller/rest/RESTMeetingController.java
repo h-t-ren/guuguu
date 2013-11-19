@@ -39,6 +39,8 @@ public class RESTMeetingController {
 	@Autowired
 	private UserService userService;
 	@Autowired private MeetingService meetingService;
+
+	
 	@RequestMapping(value = "create", method = RequestMethod.POST)
 	@Transactional(readOnly = false)
 	public @ResponseBody
@@ -74,4 +76,6 @@ public class RESTMeetingController {
 	  	 }
 		return pollForm;
 	}
+	
+	
 }

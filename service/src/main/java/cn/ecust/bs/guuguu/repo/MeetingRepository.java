@@ -34,5 +34,15 @@ public interface MeetingRepository extends GraphRepository<Meeting>{
              " match meeting<-[r:"+RelationType.UserParticipateMeeting+"]-users " +
              " return users")
      public List<User> getPaticipates(Meeting meeting);
+	
+	 @Query( "start user=node({0}) " +
+             " match user-[r:"+RelationType.UserCreateMeeting+"]->meeting " +
+             " return meeting") 
+	 public List<Meeting> findYourCreatedMeetings(User user);
+	 
+	 @Query( "start user=node({0}) " +
+             " match user-[r:"+RelationType.UserParticipateMeeting+"]->meeting " +
+             " return meeting") 
+	 public List<Meeting> findYourParticipateMeetings(User user);
 	 
 }

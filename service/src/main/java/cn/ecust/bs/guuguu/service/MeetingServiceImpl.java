@@ -149,6 +149,19 @@ public class MeetingServiceImpl implements MeetingService {
 	public Meeting findByUrl(String url) {
 		return meetingRepository.findByUrl(url);
 	}
+	@Override
+	public Meeting findById(Long id) {
+		return meetingRepository.findOne(id);
+	}
+	@Override
+	public List<Meeting> findYourCreatedMeetings(User user) {
+		return meetingRepository.findYourCreatedMeetings(user);
+	}
+	@Override
+	public List<Meeting> findYourParticipateMeetings(User user) {
+		return meetingRepository.findYourParticipateMeetings(user);
+	}
+	
 
 
 

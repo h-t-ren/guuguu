@@ -18,6 +18,8 @@ public class TimeSlot implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Date date;
 	private String timeSlot;
+	private Integer seqence;
+	private Integer count;
 
 	public Date getDate() {
 		return date;
@@ -33,5 +35,21 @@ public class TimeSlot implements Serializable {
 
 	public void setTimeSlot(String timeSlot) {
 		this.timeSlot = timeSlot;
+	}
+
+	public Integer getSeqence() {
+		return seqence;
+	}
+
+	public void setSeqence(Integer seqence) {
+		this.seqence = seqence;
+	}
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
 	}
 }
