@@ -14,5 +14,5 @@ public interface MeetingService {
 	public Meeting findByUrl(String url);
 	public Meeting findById(Long id);
 	public List<Meeting> findYourCreatedMeetings(User user);
-	public List<Meeting> findYourParticipateMeetings(User user);
+	public List<Meeting> findYourParticipatedMeetings(User user);
 }

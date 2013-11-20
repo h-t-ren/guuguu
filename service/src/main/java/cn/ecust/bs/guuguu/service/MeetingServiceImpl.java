@@ -158,8 +158,8 @@ public class MeetingServiceImpl implements MeetingService {
 		return meetingRepository.findYourCreatedMeetings(user);
 	}
 	@Override
-	public List<Meeting> findYourParticipateMeetings(User user) {
-		return meetingRepository.findYourParticipateMeetings(user);
+	public List<Meeting> findYourParticipatedMeetings(User user) {
+		return meetingRepository.findYourParticipatedMeetings(user);
 	}
 	
 
