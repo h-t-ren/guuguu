@@ -23,8 +23,6 @@ public interface MeetingRepository extends GraphRepository<Meeting>{
              " return meetingTimes order by meetingTimes.seqence") 
      public List<MeetingTime> getMeetingTimes(Meeting meeting);
 	 
-	 
-	 
 	 @Query( "start meeting=node({0}) " +
              " match meeting<-[r:"+RelationType.UserParticipateMeeting+"]-users " +
              " return r")

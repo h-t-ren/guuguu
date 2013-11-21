@@ -100,7 +100,7 @@ public class MeetingServiceImpl implements MeetingService {
 		}
 		else
 		{
-			int seq=1;
+			int seq=0;
 			for(TimeSlot ts:meetingForm.getTimeSlot())
 			{
 				MeetingTime t = new MeetingTime();
