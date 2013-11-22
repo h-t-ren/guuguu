@@ -45,7 +45,7 @@
 	<!-- Username and Password Credentials to access restful service -->
 	<bean id="credentials" class="org.apache.http.auth.UsernamePasswordCredentials">
 		<constructor-arg name="userName">
-			<value>guuguu</value>
+			<value>guuguu2000@yahoo.com</value>
 		</constructor-arg>
 		<constructor-arg name="password">
 			<value>Guuguu_guuguu2013</value>

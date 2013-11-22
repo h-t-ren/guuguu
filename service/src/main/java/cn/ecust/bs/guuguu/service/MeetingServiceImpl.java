@@ -75,7 +75,7 @@ public class MeetingServiceImpl implements MeetingService {
 			ObjectMapper mapper = new ObjectMapper();
 			TimeSlotJsons tsss = mapper.readValue(events, TimeSlotJsons.class);
 			SimpleDateFormat sdf=new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss",Locale.ENGLISH);
-			int seq = 1;
+			int seq = 0;
 			for(TimeSlotJson timeSlotJson:tsss.getTimeSlotJsons())
 			{
 				String start = timeSlotJson.getStart().replace(" GMT+0800", "");

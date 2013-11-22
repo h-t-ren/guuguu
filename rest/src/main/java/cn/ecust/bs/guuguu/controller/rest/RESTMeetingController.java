@@ -23,6 +23,7 @@ import cn.ecust.bs.guuguu.service.MeetingService;
 import cn.ecust.bs.guuguu.service.UserService;
 import cn.ecust.bs.guuguu.ws.domain.ClientType;
 import cn.ecust.bs.guuguu.ws.domain.MeetingForm;
+import cn.ecust.bs.guuguu.ws.domain.Meetings;
 import cn.ecust.bs.guuguu.ws.domain.PollForm;
 import cn.ecust.bs.guuguu.ws.domain.Role;
 import cn.ecust.bs.guuguu.ws.domain.TimeSlot;
@@ -85,7 +86,7 @@ public class RESTMeetingController {
 	@RequestMapping(value = "user/{login}/meetings", method = RequestMethod.GET)
 	@Transactional(readOnly = true)
 	public @ResponseBody
-	List<MeetingForm> findMeetings(@PathVariable("login") String login) {
+	Meetings findMeetings(@PathVariable("login") String login) {
 		 User user =  userRepository.findByLogin(login);
 		 List<Meeting> meetings = meetingService.findYourCreatedMeetings(user);
 		 List<MeetingForm> meetingForms = new ArrayList<MeetingForm>(0);
@@ -93,7 +94,9 @@ public class RESTMeetingController {
 		 {
 			 meetingForms.add(toWSDomain(m));
 		 }
-		 return meetingForms;
+		 Meetings mts = new Meetings();
+		 mts.setMeetings(meetingForms);
+		 return mts;
 	}
 	
 	
@@ -120,12 +123,14 @@ public class RESTMeetingController {
 		TimeSlot[] ts = new TimeSlot[mts.size()];
 		for(MeetingTime mt:mts)
 		{
-			ts[mt.getSeqence()].setSeqence(mt.getSeqence());
-			ts[mt.getSeqence()].setDate(mt.getDate());
-			ts[mt.getSeqence()].setCount(mt.getCount());
-			ts[mt.getSeqence()].setTimeSlot(mt.getTimeSlot());
+			TimeSlot t = new TimeSlot();
+			t.setSeqence(mt.getSeqence());
+			t.setDate(mt.getDate());
+			t.setCount(mt.getCount());
+			t.setTimeSlot(mt.getTimeSlot());
+			ts[mt.getSeqence()]=t;
 		}
-
+		meetingForm.setTimeSlot(ts);
 		return meetingForm;
 	}
 }

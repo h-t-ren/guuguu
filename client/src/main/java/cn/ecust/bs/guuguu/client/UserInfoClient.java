@@ -13,7 +13,7 @@ public class UserInfoClient {
 
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/appContext.xml");
     RestTemplate restTemplate = applicationContext.getBean("restTemplate", RestTemplate.class);
-    String url = ServerURL.restURL+"rest/user/53564232@qq.com/info";
+    String url = ServerURL.restURL+"user/hongtao.ren@gmail.com/info";
     GuuGuuUser user = (GuuGuuUser)restTemplate.getForObject(url, GuuGuuUser.class); 
   
     System.out.println("user name: " + user.getUserName()+", email: " + user.getEmail()+", mobile: " + user.getMobile());

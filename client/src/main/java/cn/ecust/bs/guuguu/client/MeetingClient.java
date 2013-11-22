@@ -1,17 +1,16 @@
 package cn.ecust.bs.guuguu.client;
 
-import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.client.RestTemplate;
 
 import cn.ecust.bs.guuguu.ws.domain.ClientType;
+
 import cn.ecust.bs.guuguu.ws.domain.MeetingForm;
+import cn.ecust.bs.guuguu.ws.domain.Meetings;
 import cn.ecust.bs.guuguu.ws.domain.TimeSlot;
 
 
@@ -22,10 +21,23 @@ public class MeetingClient {
 
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/appContext.xml");
     RestTemplate restTemplate = applicationContext.getBean("restTemplate", RestTemplate.class);
-    String url = ServerURL.restURL+"rest/meeting/create";
+    String url = ServerURL.restURL+"meeting/create";
     MeetingForm meeting = populateMeeting();
     restTemplate.postForObject(url, meeting, MeetingForm.class);
     
+
+    String meetingsUrl = ServerURL.restURL+"meeting/user/hongtao.ren@gmail.com/meetings";
+    Meetings mts = (Meetings)restTemplate.getForObject(meetingsUrl, Meetings.class); 
+    
+  //  JsonPrinter.print(mts);
+    
+    //get meeting by Id
+    String meetingUrl = ServerURL.restURL+"meeting/{id}";
+    long idMeeting =7l;
+    MeetingForm mf = (MeetingForm)restTemplate.getForObject(meetingUrl, MeetingForm.class,idMeeting); 
+    
+    JsonPrinter.print(mf);
+
 }
   
   
